@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int elements[5];
+    int top = -1;
+    top++;
+    elements[top] = 10;
+
+    top++;
+    elements[top] = 20;
+
+    top++;
+    elements[top] = 30;
+
+    cout << "elements in stack: ";
+    for (int i = top; i >= 0; i--) {
+        cout << elements[i] << " ";
+    }
+    return 0;
+}
