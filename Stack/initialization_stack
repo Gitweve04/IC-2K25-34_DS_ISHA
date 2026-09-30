@@ -1,0 +1,14 @@
+#include<iostream>
+class myclass{
+    private:
+    int *arr;
+    int capacity;
+    int top;
+
+    public:
+    myclass(int cap){
+        cap = capacity;
+        arr = new int[capacity];
+        top = -1;
+    }
+};
