@@ -1,0 +1,21 @@
+#include <iostream>
+#define SIZE 5
+using namespace std;
+
+int arr[SIZE];
+int top = -1;
+
+bool isFull() {
+    return top == 4;
+}
+
+int main(){
+    if(isFull()){
+        cout<<"stack is full"<< endl;
+    }
+    else{
+        cout<<"stack is not full";
+    }
+
+    return 0;
+}
