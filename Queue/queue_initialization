@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+class myQueue {
+    int* arr;
+    
+    int capacity;
+    int size;
+    
+public:
+
+    myQueue(int c) {
+        capacity = c;
+        arr = new int[capacity];
+        size = 0;
+    }
+};
+int main() {
+    myQueue q(5);
+
+    return 0;
+}
