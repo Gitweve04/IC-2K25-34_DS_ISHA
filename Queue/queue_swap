@@ -1,0 +1,18 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+int main()
+{
+    queue<char> q1, q2;
+    q1.push('A');
+    q1.push('B');
+    q1.push('C');
+
+    q2.push('X');
+    q2.push('Y');
+    swap(q1, q2);
+    cout << "Front of q1: " << q1.front() << endl;
+    cout << "Front of q2: " << q2.front() << endl;
+
+    return 0;
+}
