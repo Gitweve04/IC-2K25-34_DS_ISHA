@@ -1,0 +1,87 @@
+#include <iostream>
+using namespace std;
+
+class CircularQueue {
+private:
+    int* arr;
+    int front;
+    int rear;
+    int capacity;
+
+public:
+    CircularQueue(int size) {
+        capacity = size;
+        arr = new int[capacity];
+        front = -1;
+        rear = -1;
+    }
+
+    ~CircularQueue() {
+        delete[] arr;
+    }
+
+    bool isFull() {
+ 
+        return ((front == 0 && rear == capacity - 1) || (rear == (front - 1) % (capacity - 1)));
+    }
+    bool isEmpty() {
+        return (front == -1);
+    }
+
+   
+    void enqueue(int value) {
+       
+        if (isFull()) {
+            cout << "Queue Overflow! Cannot insert " << value << endl;
+            return;
+        }
+
+   
+        if (isEmpty()) {
+            front = 0;
+            rear = 0;
+        }
+        else if (rear == capacity - 1 && front != 0) {
+            rear = 0;
+        }
+        else {
+            rear++;
+        }
+
+        arr[rear] = value;
+        cout << "Inserted: " << value << endl;
+    }
+
+    void display() {
+        if (isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return;
+        }
+        cout << "Queue elements: ";
+        if (rear >= front) {
+            for (int i = front; i <= rear; i++)
+                cout << arr[i] << " ";
+        } else {
+            for (int i = front; i < capacity; i++)
+                cout << arr[i] << " ";
+            for (int i = 0; i <= rear; i++)
+                cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    CircularQueue q(5);
+
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.enqueue(40);
+    q.enqueue(50);
+    q.enqueue(60); 
+
+    q.display();
+
+    return 0;
+}
