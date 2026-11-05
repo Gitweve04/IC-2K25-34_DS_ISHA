@@ -1,0 +1,49 @@
+
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+int main() {
+    Node *head = NULL, *temp, *newNode;
+    int n, key, position = 1;
+
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        newNode = new Node;
+        cin >> newNode->data;
+        newNode->next = NULL;
+
+        if (head == NULL)
+            head = newNode;
+        else {
+            temp = head;
+            while (temp->next != NULL)
+                temp = temp->next;
+            temp->next = newNode;
+        }
+    }
+
+    cout << "Enter element to search: ";
+    cin >> key;
+
+    temp = head;
+
+    while (temp != NULL) {
+        if (temp->data == key) {
+            cout << "Element found at position "
+                 << position;
+            return 0;
+        }
+
+        temp = temp->next;
+        position++;
+    }
+
+    cout << "Element not found";
+    return 0;
+}
