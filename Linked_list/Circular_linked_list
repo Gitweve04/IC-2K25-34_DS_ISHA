@@ -1,0 +1,55 @@
+
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+int main() {
+    Node *head = NULL, *temp, *newNode;
+    int n;
+
+    cout << "Enter number of nodes: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        newNode = new Node;
+
+        cout << "Enter data: ";
+        cin >> newNode->data;
+
+        if (head == NULL) {
+            head = newNode;
+            newNode->next = head;
+        }
+        else {
+            temp = head;
+
+            while (temp->next != head)
+                temp = temp->next;
+
+            temp->next = newNode;
+            newNode->next = head;
+        }
+    }
+
+    if (head == NULL) {
+        cout << "List is empty";
+    }
+    else {
+        temp = head;
+
+        cout << "Circular List: ";
+
+        do {
+            cout << temp->data << " -> ";
+            temp = temp->next;
+        } while (temp != head);
+
+        cout << "HEAD";
+    }
+
+    return 0;
+}
