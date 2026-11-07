@@ -1,0 +1,64 @@
+
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+Node* insert(Node* root, int value) {
+    if (root == NULL) {
+        Node* newNode = new Node;
+        newNode->data = value;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
+    }
+
+    if (value < root->data)
+        root->left = insert(root->left, value);
+    else if (value > root->data)
+        root->right = insert(root->right, value);
+
+    return root;
+}
+
+bool search(Node* root, int key) {
+
+    if (root == NULL)
+        return false;
+
+    if (root->data == key)
+        return true;
+
+    if (key < root->data)
+        return search(root->left, key);
+
+    return search(root->right, key);
+}
+
+int main() {
+
+    Node* root = NULL;
+    int n, value, key;
+
+    cout << "Enter number of nodes: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cin >> value;
+        root = insert(root, value);
+    }
+
+    cout << "Enter element to search: ";
+    cin >> key;
+
+    if (search(root, key))
+        cout << "Element Found";
+    else
+        cout << "Element Not Found";
+
+    return 0;
+}
